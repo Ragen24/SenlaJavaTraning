@@ -1,0 +1,40 @@
+initial array
+wtitle1 by name1 surname1
+atitle2 by name2 surname2
+gtitle3 by name3 surname3
+ctitle4 by name4 surname4
+readed array
+wtitle1 by name1 surname1
+atitle2 by name2 surname2
+gtitle3 by name3 surname3
+ctitle4 by name4 surname4
+Sorted books
+[atitle2 by name2 surname2, ctitle4 by name4 surname4, gtitle3 by name3 surname3, wtitle1 by name1 surname1]
+[gtitle3 by name3 surname3, wtitle1 by name1 surname1, atitle2 by name2 surname2, ctitle4 by name4 surname4]
+[gtitle3 by name3 surname3, ctitle4 by name4 surname4, wtitle1 by name1 surname1, atitle2 by name2 surname2]
+Sorted orders
+[Order{client=name1 surname1, books=[atitle2 by name2 surname2], price=800.0, status=CANCELED, executionDate=2015-08-20}, Order{client=name2 surname2, books=[atitle2 by name2 surname2, gtitle3 by name3 surname3], price=2100.0, status=DONE, executionDate=2017-08-20}, Order{client=name1 surname1, books=[wtitle1 by name1 surname1, gtitle3 by name3 surname3], price=2500.0, status=DELIVERING, executionDate=2018-03-20}]
+[Order{client=name1 surname1, books=[atitle2 by name2 surname2], price=800.0, status=CANCELED, executionDate=2015-08-20}, Order{client=name2 surname2, books=[atitle2 by name2 surname2, gtitle3 by name3 surname3], price=2100.0, status=DONE, executionDate=2017-08-20}, Order{client=name1 surname1, books=[wtitle1 by name1 surname1, gtitle3 by name3 surname3], price=2500.0, status=DELIVERING, executionDate=2018-03-20}]
+[Order{client=name1 surname1, books=[wtitle1 by name1 surname1, gtitle3 by name3 surname3], price=2500.0, status=DELIVERING, executionDate=2018-03-20}, Order{client=name2 surname2, books=[atitle2 by name2 surname2, gtitle3 by name3 surname3], price=2100.0, status=DONE, executionDate=2017-08-20}, Order{client=name1 surname1, books=[atitle2 by name2 surname2], price=800.0, status=CANCELED, executionDate=2015-08-20}]
+Completed orders for period of time
+[Order{client=name2 surname2, books=[atitle2 by name2 surname2, gtitle3 by name3 surname3], price=2100.0, status=DONE, executionDate=2017-08-20}]
+[Order{client=name2 surname2, books=[atitle2 by name2 surname2, gtitle3 by name3 surname3], price=2100.0, status=DONE, executionDate=2017-08-20}]
+[Order{client=name2 surname2, books=[atitle2 by name2 surname2, gtitle3 by name3 surname3], price=2100.0, status=DONE, executionDate=2017-08-20}]
+Total profit for period of time
+2100.0
+List of StaleBooks
+[atitle2 by name2 surname2, gtitle3 by name3 surname3]
+[atitle2 by name2 surname2, gtitle3 by name3 surname3]
+Order details
+Order by name1 surname1
+Contains books: 
+ wtitle1 by name1 surname1 costs1200.0
+ atitle2 by name2 surname2 costs800.0
+ gtitle3 by name3 surname3 costs1300.0
+ ctitle4 by name4 surname4 costs500.0
+ExecutionDate: 2018-03-20
+Status: DELIVERING
+Book description
+wtitle1 by name1 surname1
+
+ BOOK DESCRIPTION

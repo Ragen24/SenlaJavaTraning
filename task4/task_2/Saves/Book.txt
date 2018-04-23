@@ -1,0 +1,4 @@
+wtitle1;name1 surname1;1200.0;2015-07-20;ABSENT
+atitle2;name2 surname2;800.0;2015-08-15;ABSENT
+gtitle3;name3 surname3;1300.0;2015-06-20;AVAILABLE
+ctitle4;name4 surname4;500.0;2015-08-17;AVAILABLE
