@@ -1,6 +1,9 @@
 package com.senlatask.bookstore.model.interfaces;
 
 import com.senlatask.bookstore.model.models.Order;
+import com.senlatask.bookstore.model.stores.BookStore;
+import com.senlatask.bookstore.model.stores.OrderStore;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -29,4 +32,6 @@ public interface IOrderService extends IService {
     Order removeOrder(long id);
 
     Order duplicateOrder(long id);
+
+    OrderStore getStore();
 }

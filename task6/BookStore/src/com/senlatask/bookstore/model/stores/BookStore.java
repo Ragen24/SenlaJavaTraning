@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class BookStore implements IStore<Book> {
     private List<Book> books;
-
+    private Long lastId = 10L;
     /**
      * Book store constructor
      */
@@ -52,6 +52,7 @@ public class BookStore implements IStore<Book> {
      */
     @Override
     public void addNew(Book book) {
+        book.setId(lastId++);
         books.add(book);
         book.setRecieptDate(LocalDate.now());
     }

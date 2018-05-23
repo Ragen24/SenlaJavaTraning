@@ -89,17 +89,26 @@ public class RequestService implements IRequestService {
     }
 
     /**
+     * Get request store
+     * @return requestStore
+     */
+    @Override
+    public RequestStore getStore() {
+        return requestStore;
+    }
+
+    /**
      * Save requests
      */
     @Override
     public void save() {
-        Request[] array = getAll().toArray(new Request[getAll().size()]);
+        /*Request[] array = getAll().toArray(new Request[getAll().size()]);
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("resources/requests.ser"))) {
             objectOutputStream.writeObject(array);
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     /**
@@ -107,11 +116,11 @@ public class RequestService implements IRequestService {
      */
     @Override
     public void load() {
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("resources/requests.ser"))) {
+        /*try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("resources/requests.ser"))) {
             Request[] array = (Request[])objectInputStream.readObject();
             requestStore.addAll(new ArrayList<Request>(Arrays.asList(array)));
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }

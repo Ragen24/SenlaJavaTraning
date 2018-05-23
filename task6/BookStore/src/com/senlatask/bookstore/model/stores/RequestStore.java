@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class RequestStore implements IStore<Request> {
     private List<Request> requests;
+    private Long lastId = 10L;
 
     /**
      * Requests store constructor
@@ -51,6 +52,7 @@ public class RequestStore implements IStore<Request> {
      */
     @Override
     public void addNew(Request request) {
+        request.setId(lastId++);
         requests.add(request);
     }
 

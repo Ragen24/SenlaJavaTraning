@@ -1,6 +1,7 @@
 package com.senlatask.bookstore.model.interfaces;
 
 import com.senlatask.bookstore.model.models.Book;
+import com.senlatask.bookstore.model.stores.BookStore;
 
 import java.util.List;
 
@@ -31,4 +32,6 @@ public interface IBookService extends IService {
     void importFromFile();
 
     void importFromFile(String string);
+
+    BookStore getStore();
 }

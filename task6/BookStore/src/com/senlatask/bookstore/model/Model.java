@@ -8,6 +8,7 @@ import com.senlatask.bookstore.model.interfaces.IRequestService;
 import com.senlatask.bookstore.model.models.Book;
 import com.senlatask.bookstore.model.models.Order;
 import com.senlatask.bookstore.model.models.Request;
+import com.senlatask.bookstore.model.serialization.BookStoreDto;
 import com.senlatask.bookstore.model.service.BookService;
 import com.senlatask.bookstore.model.service.OrderService;
 import com.senlatask.bookstore.model.service.RequestService;
@@ -31,14 +32,12 @@ public class Model {
      * Model constructor
      */
     private Model() {
-        BookStore bookStore = new BookStore();
-        this.bookService = new BookService(bookStore);
-        this.orderService = new OrderService(new OrderStore(), bookStore);
-        this.requestService = new RequestService(new RequestStore());
+        load();
     }
 
     /**
      * Get model instance
+     *
      * @return model instance
      */
     public static Model getInstance() {
@@ -50,6 +49,7 @@ public class Model {
 
     /**
      * Get all books
+     *
      * @return books
      */
     public List<Book> getBooks() {
@@ -58,6 +58,7 @@ public class Model {
 
     /**
      * Get book by id
+     *
      * @param id — book id
      * @return book or null
      */
@@ -67,6 +68,7 @@ public class Model {
 
     /**
      * Get stale books
+     *
      * @return stale books
      */
     public List<Book> getStaleBooks() {
@@ -75,6 +77,7 @@ public class Model {
 
     /**
      * Get sorted stale books
+     *
      * @param orderType — order type
      * @return sorted stale books
      */
@@ -84,6 +87,7 @@ public class Model {
 
     /**
      * Get sorted books
+     *
      * @param orderType — order type
      * @return sorted books
      */
@@ -93,6 +97,7 @@ public class Model {
 
     /**
      * Get book description by book id
+     *
      * @param id — book id
      * @return book description
      */
@@ -102,6 +107,7 @@ public class Model {
 
     /**
      * Add book to stock
+     *
      * @param book — added book
      */
     public void addBookToStock(Book book) {
@@ -115,6 +121,7 @@ public class Model {
 
     /**
      * Remove book from stock by book id
+     *
      * @param id — book id
      * @return book or null
      */
@@ -124,6 +131,7 @@ public class Model {
 
     /**
      * Get orders
+     *
      * @return orders
      */
     public List<Order> getOrders() {
@@ -132,8 +140,9 @@ public class Model {
 
     /**
      * Get sorted completed order for period of time
-     * @param from — first date of period
-     * @param to — last date of period
+     *
+     * @param from      — first date of period
+     * @param to        — last date of period
      * @param orderType — order type
      * @return orders
      */
@@ -143,8 +152,9 @@ public class Model {
 
     /**
      * Get profit for period of time
+     *
      * @param from — first date of period
-     * @param to — last date of period
+     * @param to   — last date of period
      * @return orders
      */
     public double getProfitForPeriod(LocalDate from, LocalDate to) {
@@ -153,8 +163,9 @@ public class Model {
 
     /**
      * Get amount completed orders  for period of time
+     *
      * @param from — first date of period
-     * @param to — last date of period
+     * @param to   — last date of period
      * @return amount of completed orders
      */
     public int getCompletedOrdersAmountForPeriod(LocalDate from, LocalDate to) {
@@ -163,6 +174,7 @@ public class Model {
 
     /**
      * Get sorted orders
+     *
      * @param orderType — order type
      * @return sorted orders
      */
@@ -172,6 +184,7 @@ public class Model {
 
     /**
      * Get details of orders by order id
+     *
      * @param id — order id
      * @return order details
      */
@@ -181,6 +194,7 @@ public class Model {
 
     /**
      * Add order
+     *
      * @param order
      */
     public void addOrder(Order order) {
@@ -189,6 +203,7 @@ public class Model {
 
     /**
      * Complete order by order id
+     *
      * @param id — order id
      * @return order or null
      */
@@ -198,6 +213,7 @@ public class Model {
 
     /**
      * Cancel order by order id
+     *
      * @param id — order id
      * @return order or null
      */
@@ -207,6 +223,7 @@ public class Model {
 
     /**
      * Remove order by order id
+     *
      * @param id — order id
      * @return order or null
      */
@@ -216,6 +233,7 @@ public class Model {
 
     /**
      * Get requests on book by book id
+     *
      * @param id — book id
      * @return requests
      */
@@ -226,6 +244,7 @@ public class Model {
 
     /**
      * Get sorted requests on book by book id
+     *
      * @param id — book id
      * @return requests
      */
@@ -236,6 +255,7 @@ public class Model {
 
     /**
      * Add request on book by book id
+     *
      * @param bookId — book id
      */
     public void addRequest(long bookId) {
@@ -248,6 +268,7 @@ public class Model {
 
     /**
      * Delete request on book by book id
+     *
      * @param id — book id
      * @return request or null
      */
@@ -256,7 +277,7 @@ public class Model {
     }
 
     public void importBook(String string) {
-        if (string.equals("")) {
+        if (string.equals("default")) {
             bookService.importFromFile();
         } else {
             bookService.importFromFile(string);
@@ -264,7 +285,7 @@ public class Model {
     }
 
     public void exportBook(String string) {
-        if (string.equals("")) {
+        if (string.equals("default")) {
             bookService.exportToFile();
         } else {
             bookService.exportToFile(string);
@@ -275,20 +296,35 @@ public class Model {
     /**
      * Save books, orders and requests to file
      */
-    public void save() {
-        bookService.save();
-        orderService.save();
-        requestService.save();
+    public boolean save() {
+        String filePath = PropertyController.getSerializationFilePath();
+        BookStoreDto bookStoreDto = new BookStoreDto(filePath, bookService.getStore(), orderService.getStore(),
+                requestService.getStore());
+
+        return bookStoreDto.save();
     }
 
     /**
      * Load books, orders and requests from file
+     * Or if loading not successful initialize model with empty stores
      */
-    public void load() {
-        System.out.println("load");
-        bookService.load();
-        orderService.load();
-        requestService.load();
+    public boolean load() {
+        String filePath = PropertyController.getSerializationFilePath();
+        BookStoreDto bookStoreDto = new BookStoreDto(filePath);
+
+        if (bookStoreDto.load()) {
+            this.bookService = new BookService(bookStoreDto.getBookStore());
+            this.orderService = new OrderService(bookStoreDto.getOrderStore(), bookStoreDto.getBookStore());
+            this.requestService = new RequestService(bookStoreDto.getRequestStore());
+
+            return true;
+        } else {
+            BookStore bookStore = new BookStore();
+            this.bookService = new BookService(bookStore);
+            this.orderService = new OrderService(new OrderStore(), bookStore);
+            this.requestService = new RequestService(new RequestStore());
+            return false;
+        }
     }
 
     public Order duplicateOrder(long id) {

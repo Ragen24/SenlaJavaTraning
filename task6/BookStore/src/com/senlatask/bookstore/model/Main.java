@@ -16,12 +16,12 @@ public class Main {
         //TextFileWorker textFileWorker = new TextFileWorker()
         //final FileUtil<Book> bookUtil = new BookFileUtil(args[0]);
 
-        /*Client client1 = new Client("name1", "surname1");
+        Client client1 = new Client("name1", "surname1");
         Client client2 = new Client("name2", "surname2");
         Client client3 = new Client("name3", "surname3");
         Client client4 = new Client("name4", "surname4");
 
-        Book book1 = new Book("wtitle1", new Author("name1", "surname1"), 1200,
+        /*Book book1 = new Book("wtitle1", new Author("name1", "surname1"), 1200,
                      LocalDate.of(2015, Month.JULY, 20));
         book1.setRecieptDate(LocalDate.of(2018, Month.MARCH, 20));
         book1.setDescription("BOOK DESCRIPTION");
@@ -36,11 +36,11 @@ public class Main {
         book3.setStatus(BookStatus.EXPECTS_DELIVERY);
         Book book4 = new Book("ctitle4", new Author("name4", "surname4"), 500,
                      LocalDate.of(2015, Month.AUGUST, 17));
-        book4.setRecieptDate(LocalDate.of(2018, Month.MARCH, 20));*/
+        book4.setRecieptDate(LocalDate.of(2018, Month.MARCH, 20));
         PropertyController.loadPropertiesFromFile();
-        Model model = Model.getInstance();
+        Model model = Model.getInstance();*/
 
-        model.load();
+        //model.load();
 
         /*model.addBookToStock(book1);
         model.addBookToStock(book2);

@@ -12,6 +12,9 @@ public class SaveAction extends AbstractAction {
 
     @Override
     public void execute() {
-        model.save();
+        if (!model.save()) {
+            System.out.println("Can't load data!");
+        }
+
     }
 }

@@ -8,7 +8,6 @@ import java.io.Serializable;
  * Request model with properties <b>id</b>, <b>name</b>, <b>book</b>, <b>status</b>
  */
 public class Request implements Serializable {
-    private static long ID = 0;
     private long id;
     private String name;
     private Book book;
@@ -21,7 +20,6 @@ public class Request implements Serializable {
     public Request(Book book) {
         this.book = book;
         this.name = book.getTitle();
-        id = ++ID;
     }
 
     /**

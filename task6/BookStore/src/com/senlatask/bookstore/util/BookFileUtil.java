@@ -1,7 +1,5 @@
 package com.senlatask.bookstore.util;
 
-import com.senla.training.FileWorker;
-import com.senla.training.TextFileWorker;
 import com.senlatask.bookstore.model.enumerations.BookStatus;
 import com.senlatask.bookstore.model.models.Author;
 import com.senlatask.bookstore.model.models.Book;
@@ -15,7 +13,7 @@ import java.time.LocalDate;
 public class BookFileUtil implements FileUtil<Book> {
     private static final String FILE = "resources/book.csv";
 
-    private final FileWorker fileWorker;
+    private final TextFileWorker fileWorker;
 
     public BookFileUtil() {
         fileWorker = new TextFileWorker(FILE);

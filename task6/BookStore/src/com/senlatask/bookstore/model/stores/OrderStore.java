@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class OrderStore implements IStore<Order> {
     private List<Order> orders;
+    private Long lastId = 10L;
 
     /**
      * Order store constructor
@@ -51,6 +52,7 @@ public class OrderStore implements IStore<Order> {
      */
     @Override
     public void addNew(Order order) {
+        order.setId(lastId++);
         orders.add(order);
     }
 

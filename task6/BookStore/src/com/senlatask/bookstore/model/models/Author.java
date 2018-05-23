@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Author model
  */
-public class Author extends Person implements Serializable{
+public class Author extends Person {
     private static long ID = 0;
 
     public Author() {

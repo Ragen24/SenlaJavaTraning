@@ -1,9 +1,11 @@
 package com.senlatask.bookstore.model.models;
 
+import java.io.Serializable;
+
 /**
  * Abstract Person class with properties <b>id</b>, <b>name</b> and <b>surname</b>
  */
-public abstract class Person {
+public abstract class Person implements Serializable {
     protected long id;
     private String name;
     private String surname;

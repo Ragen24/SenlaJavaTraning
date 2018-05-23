@@ -10,7 +10,6 @@ import java.time.LocalDate;
  * <b>publicationDate</b>, <b>recieptDate</b>, <b>status</b> and <b>description</b>
  */
 public class Book implements Serializable {
-    private static long ID = 0;
     private long id;
     private String title;
     private Author author;
@@ -32,7 +31,7 @@ public class Book implements Serializable {
         this.author = author;
         this.price = price;
         this.publicationDate = publicationDate;
-        this.id = ++ID;
+
         this.status = BookStatus.AVAILABLE;
         this.description = "Empty";
     }

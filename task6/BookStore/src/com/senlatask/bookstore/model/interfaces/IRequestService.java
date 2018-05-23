@@ -2,6 +2,8 @@ package com.senlatask.bookstore.model.interfaces;
 
 import com.senlatask.bookstore.model.models.Book;
 import com.senlatask.bookstore.model.models.Request;
+import com.senlatask.bookstore.model.stores.OrderStore;
+import com.senlatask.bookstore.model.stores.RequestStore;
 
 import java.util.List;
 
@@ -16,4 +18,6 @@ public interface IRequestService extends IService {
     void addRequest(Request request);
 
     Request deleteRequest(long id);
+
+    RequestStore getStore();
 }

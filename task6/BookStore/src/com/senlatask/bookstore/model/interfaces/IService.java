@@ -5,5 +5,6 @@ package com.senlatask.bookstore.model.interfaces;
  */
 public interface IService {
     void save();
+
     void load();
 }

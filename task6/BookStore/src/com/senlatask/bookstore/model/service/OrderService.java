@@ -224,17 +224,26 @@ public class OrderService implements IOrderService {
     }
 
     /**
+     * Get order store
+     * @return orderStore
+     */
+    @Override
+    public OrderStore getStore() {
+        return orderStore;
+    }
+
+    /**
      * Save orders
      */
     @Override
     public void save() {
-        Order[] array = getOrders().toArray(new Order[getOrders().size()]);
+        /*Order[] array = getOrders().toArray(new Order[getOrders().size()]);
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("resources/orders.ser"))) {
             objectOutputStream.writeObject(array);
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     /**
@@ -242,12 +251,12 @@ public class OrderService implements IOrderService {
      */
     @Override
     public void load() {
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("resources/orders.ser"))) {
+        /*try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("resources/orders.ser"))) {
             Order[] array = (Order[])objectInputStream.readObject();
             orderStore.addAll(new ArrayList<Order>(Arrays.asList(array)));
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @Override

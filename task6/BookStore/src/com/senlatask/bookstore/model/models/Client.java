@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Client model
  */
-public class Client extends Person implements Serializable {
+public class Client extends Person {
     private static long ID;
 
     public Client() {

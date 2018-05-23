@@ -150,16 +150,25 @@ public class BookService implements IBookService {
     }
 
     /**
+     * Store getter
+     * @return bookStore
+     */
+    @Override
+    public BookStore getStore() {
+        return bookStore;
+    }
+
+    /**
      * Save books to file
      */
     @Override
     public void save() {
-        Book[] array = getBooks().toArray(new Book[getBooks().size()]);
+        /*Book[] array = getBooks().toArray(new Book[getBooks().size()]);
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("resources/books.ser"))) {
             objectOutputStream.writeObject(array);
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     /**
@@ -167,12 +176,12 @@ public class BookService implements IBookService {
      */
     @Override
     public void load() {
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("resources/books.ser"))) {
+        /*try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("resources/books.ser"))) {
             Book[] array = (Book[])objectInputStream.readObject();
             bookStore.addAll(new ArrayList<Book>(Arrays.asList(array)));
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @Override
@@ -204,7 +213,9 @@ public class BookService implements IBookService {
                     break;
                 }
             }
+            Long id = importedBook.getId();
             bookStore.addNew(importedBook);
+            importedBook.setId(id);
         }
     }
 }

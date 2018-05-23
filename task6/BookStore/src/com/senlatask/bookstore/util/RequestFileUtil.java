@@ -1,7 +1,6 @@
 package com.senlatask.bookstore.util;
 
-import com.senla.training.FileWorker;
-import com.senla.training.TextFileWorker;
+
 import com.senlatask.bookstore.model.Model;
 import com.senlatask.bookstore.model.models.Request;
 
@@ -12,7 +11,7 @@ import com.senlatask.bookstore.model.models.Request;
 public class RequestFileUtil implements FileUtil<Request> {
     private static final String FILE = "resources/request.csv";
 
-    private final FileWorker fileWorker;
+    private final TextFileWorker fileWorker;
 
     public RequestFileUtil() {
         fileWorker = new TextFileWorker(FILE);

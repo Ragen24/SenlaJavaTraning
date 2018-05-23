@@ -11,7 +11,6 @@ import java.util.ArrayList;
  * <b>status</b> and <b>executionDate</b>
  */
 public class Order implements Serializable {
-    private static long ID = 0;
     private long id;
     private Client client;
     private ArrayList<Book> books = new ArrayList<>();
@@ -29,7 +28,6 @@ public class Order implements Serializable {
         this.executionDate = executionDate;
         this.status = OrderStatus.PROCESSED;
         this.price = 0;
-        id = ++ID;
     }
 
     /**
